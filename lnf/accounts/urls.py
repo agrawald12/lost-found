@@ -14,4 +14,5 @@ urlpatterns =[
     path('claim/',views.claim,name="claim"),
     path('faq/',views.faq,name="faq"),
     path('contact/',views.contact,name="contact"),
+    path('success/',views.success, name = 'success')
 ]

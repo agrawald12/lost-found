@@ -8,6 +8,8 @@ from django.contrib.auth import authenticate, login, logout
 
 
 from datetime import datetime
+
+
 # signup
 def signup(request):
     if request.method == "POST":
@@ -53,3 +55,45 @@ def index(request):
     else:
         return HttpResponseRedirect("/")
 
+
+def lost_items(request):
+    if request.user.is_authenticated:
+        return render(request, "accounts/lost.html")
+    else:
+        return HttpResponseRedirect("/")
+
+def found_items(request):
+    if request.user.is_authenticated:
+        return render(request, "accounts/found.html")
+    else:
+        return HttpResponseRedirect("/")
+
+def report_lost_items(request):
+    if request.user.is_authenticated:
+        return render(request, "accounts/index.html")
+    else:
+        return HttpResponseRedirect("/")
+
+def report_found_items(request):
+    if request.user.is_authenticated:
+        return render(request, "accounts/index.html")
+    else:
+        return HttpResponseRedirect("/")
+def claim(request):
+    if request.user.is_authenticated:
+        return render(request, "accounts/index.html")
+    else:
+        return HttpResponseRedirect("/")
+
+
+def faq(request):
+    if request.user.is_authenticated:
+        return render(request, "accounts/index.html")
+    else:
+        return HttpResponseRedirect("/")
+    
+def contact(request):
+    if request.user.is_authenticated:
+        return render(request, "accounts/index.html")
+    else:
+        return HttpResponseRedirect("/")

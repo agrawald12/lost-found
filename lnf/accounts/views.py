@@ -51,7 +51,8 @@ def user_logout(request):
 
 def index(request):
     if request.user.is_authenticated:
-        return render(request, "accounts/index.html")
+        items = Item.objects.filter(is_found=True)
+        return render(request, "accounts/index.html",{'items': items})
     else:
         return HttpResponseRedirect("/")
 
@@ -122,7 +123,7 @@ def report_found_items(request):
             is_found= True
         ) 
         fd.save()
-        return redirect('success')
+        return redirect('index')
     else:
         return render(request, "accounts/found.html")
 
@@ -154,7 +155,7 @@ def report_lost_items(request):
             
         ) 
         fd.save()
-        return redirect('success')
+        return redirect('index')
     
 
     return render(request, "accounts/lost.html")

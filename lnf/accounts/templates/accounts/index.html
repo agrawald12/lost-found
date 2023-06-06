@@ -4,7 +4,7 @@
 <head>
   <title>Lost and Found Portal</title>
   <link rel="icon" type="image/png" href="images/temp logo.jpg"/>
-  {% block css %} <link rel="stylesheet" href="{% static 'accounts/css/style_main.css' %}">   {% endblock css %}
+  {% block css %} <link rel="stylesheet" href="{% static 'accounts/css/style.css' %}">   {% endblock css %}
 
 
 </head>
@@ -29,48 +29,37 @@
 <!--x----------nav----------x-->
 
 <main>
-    <div
-      class="container-fluid bg-trasparent my-4 p-3"
-      style="position: relative">
-      <div
-        class="row row-cols-1 row-cols-xs-2 row-cols-sm-2 row-cols-lg-4 g-3"
-      >
-        <div class="col">
-          <div class="card h-100 shadow-sm antiquewhite">
-            <img
-              src="/images/calc.jpeg"
-              class= "dimg"
-              alt="..."
-            />
-            <div class=" antiquewhite card-body">
-              <div class="clearfix mb-3">
-               <span class="float-start badge rounded-pill bg-primary"
-                  >Stationary</span
-                > 
-                <span class="float-end price-hp">04/06/2023</span>
-              </div>
-              <h5 class="card-title">
-                   Casio FX-991ex Black Calculator
-              </h5>
 
-              <p>
-                Fount in LT-303
-              </p>
-              
-              <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                  
-                  
-                  <button class="btn btn-warning align-self-end me-md-2" type="button">Details</button>
-                </div>
+  <h1><center>FOUND ITEMS</center></h1>
+  <div class="container-fluid bg-transparent my-4 p-3" style="position: relative">
+   
+    <div class="row row-cols-1 row-cols-xs-2 row-cols-sm-2 row-cols-lg-4 g-3">
+      {% for item in items %}
+      <div class="col">
+        <div class="card h-100 shadow-sm antiquewhite">
+          <img src="{{ item.image.url }}" class="dimg" alt="..." />
+          <div class="antiquewhite card-body">
+            <div class="clearfix mb-3">
+              <span class="float-start badge rounded-pill bg-primary">{{ item.name }}</span>
+              <span class="float-end price-hp">{{ item.date_lost_or_found }}</span>
+            </div>
+            <h5 class="card-title">{{ item.title }}</h5>
+            <p>Found in: {{ item.location }}</p>
+            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+              <button class="btn btn-warning align-self-end me-md-2" type="button">Claim</button>
             </div>
           </div>
         </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
 
          <!-- first one ends here -->
          <!-- Data to be updated from backend -->
-        <div class="col">
+        {% comment %} <div class="col">
           <div class="card h-100 shadow-sm antiquewhite">
-            <img src="/images/school bag.jpg" alt="" class="ddimg">
+            <img src="/images/school bag.jpg" alt="" class="ddimg">m 
             <div class=" antiquewhite card-body">
               <div class="clearfix mb-3">
                 <span class="float-start badge rounded-pill bg-success"
@@ -400,7 +389,7 @@
               </div>
             </div>
           </div>
-        </div>
+        </div> {% endcomment %}
       </div>
     </div>
   </main>
